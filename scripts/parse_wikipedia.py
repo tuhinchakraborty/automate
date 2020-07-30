@@ -33,10 +33,8 @@ def get_featured_article():
 
 def send_message():
     message = """From today's featured article\n""" + WIKIPEDIA_BASE_URL + get_featured_article()
+    print(message)
     client.messages.create(body=message, from_=from_whatsapp_number, to=to_whatsapp_number)
 
 
-schedule.every(1).seconds.do(send_message)
-
-while True:
-    schedule.run_pending()
+send_message()
