@@ -23,12 +23,7 @@ def get_featured_article():
     span = soup.find(id="From_today's_featured_article")
     feature_article_header = span.parent
     feature_article_body = feature_article_header.findNext('div')
-    feature_article_relative_path = feature_article_body \
-        .findNext('p') \
-        .findNext('b') \
-        .find('a') \
-        .get('href')
-    return feature_article_relative_path
+    return feature_article_body.findNext('p').findNext('a')['href']
 
 
 def send_message():
